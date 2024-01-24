@@ -1,0 +1,38 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    if: github.repository == 'mimir-labs/mimir-apps-sdk'
+    runs-on: ubuntu-latest
+    env:
+      YARN_ENABLE_SCRIPTS: false
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "yarn"
+
+      - name: Install deps
+        run: |
+          yarn install --immutable | grep -v 'YN0013'
+
+      - name: Create Release Pull Request
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          version: yarn mimir-dev-bump-version
+          publish: yarn mimir-ci-ghact-release
+          commit: "chore: Version Packages"
+          title: "chore: Version Packages"

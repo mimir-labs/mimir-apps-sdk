@@ -25,7 +25,7 @@
     "lint:dependencies": "mimir-dev-lint-dependencies",
     "lint:ts": "mimir-dev-run-lint",
     "postinstall": "mimir-dev-yarn-only",
-    "test": "mimir-dev-run-test --coverage --forceExit --runInBand --testPathIgnorePatterns e2e",
+    "test": "mimir-dev-run-test --passWithNoTests --coverage --forceExit --runInBand --testPathIgnorePatterns e2e",
     "test:one": "mimir-dev-run-test --runInBand",
     "test:watch": "mimir-dev-run-test --watch"
   },
