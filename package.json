@@ -1,0 +1,40 @@
+{
+  "author": "dev.mimir",
+  "bugs": "https://github.com/mimir-labs/mimir-apps-sdk/issues",
+  "contributors": [],
+  "description": "sdk for apps to connect mimir wallet",
+  "homepage": "https://github.com/mimir-labs/mimir-apps-sdk#readme",
+  "license": "Apache-2.0",
+  "packageManager": "yarn@4.0.0-rc.40",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mimir-labs/mimir-apps-sdk.git"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "mimir-dev-build-ts",
+    "changeset": "mimir-exec-changeset",
+    "clean": "mimir-dev-clean-build",
+    "clean:test": "mimir-dev-run-test --clearCache",
+    "lint": "yarn lint:ts && yarn lint:dependencies",
+    "lint:dependencies": "mimir-dev-lint-dependencies",
+    "lint:ts": "mimir-dev-run-lint",
+    "postinstall": "mimir-dev-yarn-only",
+    "test": "mimir-dev-run-test --coverage --forceExit --runInBand --testPathIgnorePatterns e2e",
+    "test:one": "mimir-dev-run-test --runInBand",
+    "test:watch": "mimir-dev-run-test --watch"
+  },
+  "devDependencies": {
+    "@mimirdev/dev": "^0.4.0",
+    "@types/jest": "^29.4.0",
+    "fs-extra": "^11.1.0"
+  },
+  "resolutions": {
+    "typescript": "^5.0.4"
+  }
+}

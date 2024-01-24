@@ -1,0 +1,12 @@
+{
+  "extends": "@mimirdev/dev/config/tsconfig.json",
+  "compilerOptions": {
+    "composite": true,
+    "paths": {
+      "@mimirdev/apps-sdk": ["packages/apps-sdk/src"],
+      "@mimirdev/apps-sdk/*": ["packages/apps-sdk/src/*"]
+    },
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  }
+}
