@@ -13,7 +13,7 @@ yarn add @mimirdev/apps-inject
 Functions can be imported as follows:
 
 ```js
-import { inject, isMimirReady } from '@mimirdev/apps-inject';
+import { inject, isMimirReady, MIMIR_REGEXP } from '@mimirdev/apps-inject';
 ```
 
 ```js
@@ -24,7 +24,7 @@ isMimirReady().then(origin => {
     return;
   }
   // check is "https://app.mimir.global" or "https://dev.mimir.global"
-  if (origin.startsWith('https://app.mimir.global') || origin.startsWith('https://dev.mimir.global')) {
+  if (MIMIR_REGEXP.test(origin)) {
     // inject to window.injectedWeb3.mimir
     inject();
     // now. you can use polkadot extension functions

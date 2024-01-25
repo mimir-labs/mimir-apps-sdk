@@ -9,20 +9,24 @@ import { sendMessage } from '@mimirdev/apps-sdk/sendMessage';
 
 import { packageInfo } from './packageInfo';
 
-// setup a response listener (events created by the loader for parent responses)
-window.addEventListener('message', (message: Message): void => {
-  if (isValidMessage(message)) {
-    const { data } = message;
-
-    if (data.id) {
-      handleResponse(data as TransportResponseMessage<MessageTypes>);
-    } else {
-      console.error('Missing id for response.');
-    }
-  }
-});
-
 export function inject() {
+  if (self === parent) {
+    return;
+  }
+
+  // setup a response listener (events created by the loader for parent responses)
+  window.addEventListener('message', (message: Message): void => {
+    if (isValidMessage(message)) {
+      const { data } = message;
+
+      if (data.id) {
+        handleResponse(data as TransportResponseMessage<MessageTypes>);
+      } else {
+        console.error('Missing id for response.');
+      }
+    }
+  });
+
   injectExtension(enable, {
     name: 'mimir',
     version: packageInfo.version
@@ -32,6 +36,12 @@ export function inject() {
 export function isMimirReady(): Promise<string | null> {
   return Promise.race([
     new Promise<string | null>((resolve) => {
+      if (self === parent) {
+        resolve(null);
+
+        return;
+      }
+
       const listener = (message: Message): void => {
         if (isValidMessage(message)) {
           resolve(message.origin);
@@ -45,3 +55,5 @@ export function isMimirReady(): Promise<string | null> {
     new Promise<null>((resolve) => setTimeout(() => resolve(null), 300))
   ]);
 }
+
+export { MIMIR_REGEXP } from './consts';
