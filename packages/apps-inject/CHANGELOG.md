@@ -1,5 +1,11 @@
 # @mimirdev/apps-inject
 
+## 0.2.0
+
+### Minor Changes
+
+- [#5](https://github.com/mimir-labs/mimir-apps-sdk/pull/5) [`eb547eef5b51a0f3e37291a892355c4bc98ac2e4`](https://github.com/mimir-labs/mimir-apps-sdk/commit/eb547eef5b51a0f3e37291a892355c4bc98ac2e4) Thanks [@jarvandev](https://github.com/jarvandev)! - add MIMIR_REGEXP to check opened in mimir
+
 ## 0.1.0
 
 ### Minor Changes
