@@ -25,6 +25,7 @@ isMimirReady.then(origin => {
   }
   // check is "https://app.mimir.global" or "https://dev.mimir.global"
   if (origin.startsWith('https://app.mimir.global') || origin.startsWith('https://dev.mimir.global')) {
+    // inject to window.injectedWeb3.mimir
     inject();
     // now. you can use polkadot extension functions
   }
