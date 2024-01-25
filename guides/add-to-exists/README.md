@@ -26,7 +26,7 @@ const openInIframe = window !== window.parent;
 ```js
 import { inject, isMimirReady } from '@mimirdev/apps-inject';
 
-const origin = await isMimirReady;
+const origin = await isMimirReady();
 
 if (!origin) {
   // nothing to do

@@ -29,17 +29,19 @@ export function inject() {
   });
 }
 
-export const isMimirReady: Promise<null | string> = Promise.race([
-  new Promise<string>((resolve) => {
-    const listener = (message: Message): void => {
-      if (isValidMessage(message)) {
-        resolve(message.origin);
-        window.removeEventListener('message', listener);
-      }
-    };
+export function isMimirReady(): Promise<string | null> {
+  return Promise.race([
+    new Promise<string | null>((resolve) => {
+      const listener = (message: Message): void => {
+        if (isValidMessage(message)) {
+          resolve(message.origin);
+          window.removeEventListener('message', listener);
+        }
+      };
 
-    window.addEventListener('message', listener);
-    sendMessage('pub(ping)', null);
-  }),
-  new Promise<null>((resolve) => setTimeout(() => resolve(null), 300))
-]);
+      window.addEventListener('message', listener);
+      sendMessage('pub(ping)', null);
+    }),
+    new Promise<null>((resolve) => setTimeout(() => resolve(null), 300))
+  ]);
+}

@@ -17,7 +17,7 @@ import { inject, isMimirReady } from '@mimirdev/apps-inject';
 ```
 
 ```js
-isMimirReady.then(origin => {
+isMimirReady().then(origin => {
   if (!origin) {
     // not open in mimir
 
