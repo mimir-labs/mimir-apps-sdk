@@ -24,7 +24,7 @@ const openInIframe = window !== window.parent;
 ```
 2. The second step is to check if it is opened within Mimir's iframe. We provide a function to check.
 ```js
-import { inject, isMimirReady } from '@mimirdev/apps-inject';
+import { inject, isMimirReady, MIMIR_REGEXP } from '@mimirdev/apps-inject';
 
 const origin = await isMimirReady();
 
@@ -33,7 +33,7 @@ if (!origin) {
 }
 
 // check is mimir url
-if (origin.startsWith('https://app.mimir.global') || origin.startsWith('https://dev.mimir.global')) {
+if (MIMIR_REGEXP.test(origin)) {
   // inject to window.injectedWeb3.mimir
   inject();
   // now. you can use polkadot extension functions
