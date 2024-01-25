@@ -5,5 +5,7 @@
     "@mimirdev/apps-inject": "0.0.0",
     "@mimirdev/apps-sdk": "0.0.0"
   },
-  "changesets": []
+  "changesets": [
+    "clean-cameras-grin"
+  ]
 }
