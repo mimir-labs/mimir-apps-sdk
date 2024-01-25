@@ -59,6 +59,7 @@ Since Mimir's account is a multisig account, `extrinsics` signed by Mimir go thr
 
 ```js
 import { web3FromSource } from '@polkadot/extension-dapp';
+import { checkCall } from '@mimirdev/apps-sdk';
 
 const pair = keyring.getPair(address);
 const { meta: { accountOffset, addressOffset, isExternal, isHardware, isInjected, isProxied, source } } = pair;
@@ -80,6 +81,11 @@ if (isMimir) {
 
     // Retrieve the method returned by Mimir.
     const method = api.registry.createType('Call', result.payload.method);
+
+    // check the final call is the expect call
+    if (!checkCall(method, tx)) {
+      throw new Error('not an safe method')
+    }
 
     // Reconstruct a new tx.
     tx = api.tx[method.section][method.method](...method.args);
