@@ -23,4 +23,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 
 ## How to use
 
-- [Add to existing apps](./guides/add-to-exists)
+- [Add mimir sdk to existing apps](./guides/add-to-exists)
