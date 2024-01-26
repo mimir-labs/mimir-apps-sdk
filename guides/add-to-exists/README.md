@@ -83,7 +83,7 @@ if (isMimir) {
     const method = api.registry.createType('Call', result.payload.method);
 
     // check the final call is the expect call
-    if (!checkCall(method, tx)) {
+    if (!checkCall(method, tx.method)) {
       throw new Error('not an safe method')
     }
 
