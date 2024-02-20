@@ -76,7 +76,8 @@ let tx = api.tx.balances.transferKeepAlive();
 if (isMimir) {
     const result: any = await injected.signer.signPayload({
       address: address,
-      method: tx.method.toHex()
+      method: tx.method.toHex(),
+      genesisHash: api.genesisHash.toHex() // must provide genesisHash
     } as unknown as any);
 
     // Retrieve the method returned by Mimir.
