@@ -16,13 +16,24 @@ use npm
 npm install @mimirdev/apps-inject @mimirdev/apps-sdk
 ```
 
-## inject sdk to your apps
+## Introduction
+
+Firstly, if apps want to integrate with Mimir's multisig feature, they must understand how apps interact with Mimir.
+
+To address this issue, we've adopted a similar approach to Safe Wallet. Apps need to run within Mimir's iframe, and communication between them uses the postMessage API.
+
+Next, we'll complete the integration of apps with Mimir in three steps:
+
+
+## 1. inject sdk to your apps
+
+As we all know, all Substrate-based wallets inject an object into `window.injectedWeb3`, apps use to interact with the wallet. Mimir follows the same approach. However, due to iframe restrictions, we cannot directly inject objects into the window object. Therefore, we provide an npm package for injection. First, it needs to be determined if the app is opened within an iframe. If it's opened within Mimir's iframe, the inject method can be called to inject the `mimir` object into `window.injectedWeb3`.
 
 1. The first step is to check if it is opened within an iframe.
 ```js
 const openInIframe = window !== window.parent;
 ```
-2. The second step is to check if it is opened within Mimir's iframe. We provide a function to check.
+1. The second step is to check if it is opened within Mimir's iframe. We provide a function to check.
 ```js
 import { inject, isMimirReady, MIMIR_REGEXP } from '@mimirdev/apps-inject';
 
@@ -40,9 +51,11 @@ if (MIMIR_REGEXP.test(origin)) {
 }
 ```
 
-## Retrieve the multisig account.
+## 2. Retrieve the multisig account
 
 Mimir has implemented the same interface as [polkadot-js/extension](https://github.com/polkadot-js/extension), allowing you to obtain mutisig accounts just like using other plugin wallets.
+
+Below is a code snippet demonstrating how to obtain the multisig account using polkadot/extension-dapp.
 
 **use polkadotjs sdk:**
 ```js
@@ -53,9 +66,13 @@ const injected = await web3Enable('your app name');
 const accounts = await web3Accounts();
 ```
 
-## Sign and send transactions.
+## 3. Sign and send transactions
 
-Since Mimir's account is a multisig account, `extrinsics` signed by Mimir go through at least one layer of `AsMulti` wrapping. Therefore, special handling is required for the original transaction after signing with Mimir.
+The following code snippet demonstrates how to send a `transferKeepAlive` transaction using Mimir's multisig account. Apps pass the constructed Call to Mimir in hex string format. Mimir then reconstruct the transaction, which is wrapped in a new transaction by `AsMulti`. Therefore, apps need to use the transaction and signature returned by Mimir to construct a new transaction, and then send it to the chain.
+
+**It's important to note that transactions sent by Mimir are wrapped in `AsMulti`, so apps need to consider security implications. It's crucial to verify if the latest transaction returned by Mimir is reliable. In other words, whether the original transaction, after being wrapped by `AsMulti`, matches the expected transaction of apps.**
+
+**mimir will never tamper with transactions, and all code is open source.**
 
 ```js
 import { web3FromSource } from '@polkadot/extension-dapp';
@@ -74,6 +91,7 @@ let tx = api.tx.balances.transferKeepAlive();
 
 // ⚠️Note that the following logic will only be executed when injected.name === 'mimir'.
 if (isMimir) {
+    // send to mimir
     const result: any = await injected.signer.signPayload({
       address: address,
       method: tx.method.toHex(),
@@ -83,7 +101,7 @@ if (isMimir) {
     // Retrieve the method returned by Mimir.
     const method = api.registry.createType('Call', result.payload.method);
 
-    // check the final call is the expect call
+    // check the original transaction's call, after being wrapped by `AsMulti`, is matches the tx call
     if (!checkCall(api, method, tx.method)) {
       throw new Error('not an safe method')
     }
