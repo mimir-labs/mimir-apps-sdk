@@ -9,7 +9,7 @@ import type { IMethod } from '@polkadot/types/types';
 function findFinalCall(api: ApiPromise, call: Call | IMethod): Call | IMethod {
   if (api.tx.multisig.asMulti.is(call)) {
     return findFinalCall(api, call.args[3]);
-  } else if (api.tx.proxy.proxy.is(call)) {
+  } else if (api.tx.proxy?.proxy?.is(call)) {
     return findFinalCall(api, call.args[2]);
   } else {
     return call;
