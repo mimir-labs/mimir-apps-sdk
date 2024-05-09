@@ -1,5 +1,12 @@
 # @mimirdev/apps-inject
 
+## 0.2.1
+
+### Patch Changes
+
+- Updated dependencies [[`6add9ce674d3665952e5e1ae80073954b9f6cb74`](https://github.com/mimir-labs/mimir-apps-sdk/commit/6add9ce674d3665952e5e1ae80073954b9f6cb74)]:
+  - @mimirdev/apps-sdk@0.1.1
+
 ## 0.2.0
 
 ### Minor Changes

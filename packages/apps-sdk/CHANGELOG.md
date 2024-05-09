@@ -1,5 +1,11 @@
 # @mimirdev/apps-sdk
 
+## 0.1.1
+
+### Patch Changes
+
+- [#7](https://github.com/mimir-labs/mimir-apps-sdk/pull/7) [`6add9ce674d3665952e5e1ae80073954b9f6cb74`](https://github.com/mimir-labs/mimir-apps-sdk/commit/6add9ce674d3665952e5e1ae80073954b9f6cb74) Thanks [@jarvandev](https://github.com/jarvandev)! - Fix the check failure when the chain does not have a proxy module.
+
 ## 0.1.0
 
 ### Minor Changes
