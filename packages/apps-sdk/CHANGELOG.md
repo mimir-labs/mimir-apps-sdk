@@ -1,5 +1,11 @@
 # @mimirdev/apps-sdk
 
+## 0.2.0
+
+### Minor Changes
+
+- [`f9e7e5621d3dcea104dd512264eb7194f93f1a13`](https://github.com/mimir-labs/mimir-apps-sdk/commit/f9e7e5621d3dcea104dd512264eb7194f93f1a13) Thanks [@jarvandev](https://github.com/jarvandev)! - Update polkadot deps
+
 ## 0.1.1
 
 ### Patch Changes
