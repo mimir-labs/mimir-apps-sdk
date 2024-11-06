@@ -1,5 +1,11 @@
 # @mimirdev/apps-sdk
 
+## 1.0.0
+
+### Major Changes
+
+- [#10](https://github.com/mimir-labs/mimir-apps-sdk/pull/10) [`9fd12630e98c7b5491b92ce466f45dc86f3834c4`](https://github.com/mimir-labs/mimir-apps-sdk/commit/9fd12630e98c7b5491b92ce466f45dc86f3834c4) Thanks [@jarvandev](https://github.com/jarvandev)! - Add `checkCallAsync` func for up to date integration with mimir
+
 ## 0.2.0
 
 ### Minor Changes
