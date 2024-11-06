@@ -1,5 +1,11 @@
 # @mimirdev/apps-sdk
 
+## 1.0.1
+
+### Patch Changes
+
+- [#12](https://github.com/mimir-labs/mimir-apps-sdk/pull/12) [`e42027a23f120db617520eea71d72c587c3ddbdf`](https://github.com/mimir-labs/mimir-apps-sdk/commit/e42027a23f120db617520eea71d72c587c3ddbdf) Thanks [@jarvandev](https://github.com/jarvandev)! - export checkCallAsync func
+
 ## 1.0.0
 
 ### Major Changes
