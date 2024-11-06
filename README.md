@@ -24,3 +24,4 @@ See [CONTRIBUTING.md](./CONTRIBUTING.md)
 ## How to use
 
 - [Add mimir sdk to existing apps](./guides/add-to-exists)
+- [Upgrade to v1 for up to date integration with mimir](./guides/upgrade-to-v1)

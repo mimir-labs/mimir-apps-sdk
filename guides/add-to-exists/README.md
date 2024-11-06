@@ -20,7 +20,7 @@ npm install @mimirdev/apps-inject @mimirdev/apps-sdk
 
 Firstly, if apps want to integrate with Mimir's multisig feature, they must understand how apps interact with Mimir.
 
-To address this issue, we've adopted a similar approach to Safe Wallet. Apps need to run within Mimir's iframe, and communication between them uses the postMessage API.
+To resolve this issue, we've adopted a similar approach to Safe Wallet. Apps need to run within Mimir's iframe, and communication between them uses the postMessage API.
 
 Next, we'll complete the integration of apps with Mimir in three steps:
 
@@ -76,7 +76,7 @@ The following code snippet demonstrates how to send a `transferKeepAlive` transa
 
 ```js
 import { web3FromSource } from '@polkadot/extension-dapp';
-import { checkCall } from '@mimirdev/apps-sdk';
+import { checkCallAsync } from '@mimirdev/apps-sdk';
 
 const pair = keyring.getPair(address);
 const { meta: { accountOffset, addressOffset, isExternal, isHardware, isInjected, isProxied, source } } = pair;
@@ -102,8 +102,9 @@ if (isMimir) {
     const method = api.registry.createType('Call', result.payload.method);
 
     // check the original transaction's call, after being wrapped by `AsMulti`, is matches the tx call
-    if (!checkCall(api, method, tx.method)) {
-      throw new Error('not an safe method')
+    // `address` is get from mimir wallet
+    if (!(await checkCallAsync(api, method, result.payload.address as string, tx.method, address))) {
+      throw new Error('not safe tx');
     }
 
     // Reconstruct a new tx.
