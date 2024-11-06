@@ -4,7 +4,7 @@
 import type { Message } from '@polkadot/extension-base/types';
 import type { InjectedWindow, InjectOptions } from '@polkadot/extension-inject/types';
 
-import { checkCall } from './checkCall';
+import { checkCall, checkCallAsync } from './checkCall';
 import { MESSAGE_ORIGIN_WALLET } from './defaults';
 import Injected from './Injected';
 import { handleResponse, sendMessage } from './sendMessage';
@@ -45,4 +45,4 @@ export function isValidMessage({ data, source }: Message, allowedOrigins: RegExp
   return !emptyOrMalformed && sentFromParentEl && validOrigin && data.origin === MESSAGE_ORIGIN_WALLET;
 }
 
-export { handleResponse, checkCall };
+export { handleResponse, checkCall, checkCallAsync };
