@@ -5,7 +5,7 @@
   "description": "sdk for apps to connect mimir wallet",
   "homepage": "https://github.com/mimir-labs/mimir-apps-sdk#readme",
   "license": "Apache-2.0",
-  "packageManager": "yarn@4.0.0-rc.40",
+  "packageManager": "yarn@4.5.1",
   "private": true,
   "repository": {
     "type": "git",
