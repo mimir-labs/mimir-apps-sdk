@@ -33,6 +33,7 @@
   "peerDependencies": {
     "@polkadot/api": "*",
     "@polkadot/types": "*",
-    "@polkadot/util": "*"
+    "@polkadot/util": "*",
+    "@polkadot/util-crypto": "*"
   }
 }

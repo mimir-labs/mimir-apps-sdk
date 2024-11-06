@@ -2339,12 +2339,13 @@ __metadata:
     "@polkadot/api": "*"
     "@polkadot/types": "*"
     "@polkadot/util": "*"
+    "@polkadot/util-crypto": "*"
   languageName: unknown
   linkType: soft
 
-"@mimirdev/dev@npm:^0.4.0":
-  version: 0.4.0
-  resolution: "@mimirdev/dev@npm:0.4.0"
+"@mimirdev/dev@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "@mimirdev/dev@npm:0.5.0"
   dependencies:
     "@babel/cli": "npm:^7.21.0"
     "@babel/core": "npm:^7.21.3"
@@ -2437,7 +2438,7 @@ __metadata:
     mimir-exec-prettier: scripts/mimir-exec-prettier.mjs
     mimir-exec-tsc: scripts/mimir-exec-tsc.mjs
     mimir-exec-webpack: scripts/mimir-exec-webpack.mjs
-  checksum: 10c0/a1646454e3d1984512a9e924e5b2a4cdc3c1bc89ef85e5283653f662d315da915097c740b1b91a141f99d13528757ab9435dcfb5d41dc890eda46345bc54fe36
+  checksum: 10c0/edd128e78d39ecb7c2f6c4a38a0f67bf016a179a9071471d938514013cb1bd03eaf774ac7fd1bb3cac260accd2c3057e15df92d767f0d7dd5dd7f266a31b8d16
   languageName: node
   linkType: hard
 
@@ -12660,7 +12661,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
-    "@mimirdev/dev": "npm:^0.4.0"
+    "@mimirdev/dev": "npm:^0.5.0"
     "@types/jest": "npm:^29.4.0"
     fs-extra: "npm:^11.1.0"
   languageName: unknown
