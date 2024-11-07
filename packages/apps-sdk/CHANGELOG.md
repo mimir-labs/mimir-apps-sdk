@@ -1,5 +1,11 @@
 # @mimirdev/apps-sdk
 
+## 1.1.0
+
+### Minor Changes
+
+- [#14](https://github.com/mimir-labs/mimir-apps-sdk/pull/14) [`8934b7e8c227d7cbd2cabb1318d695494659c6e9`](https://github.com/mimir-labs/mimir-apps-sdk/commit/8934b7e8c227d7cbd2cabb1318d695494659c6e9) Thanks [@jarvandev](https://github.com/jarvandev)! - add asMultiThreshold1 for checkCall
+
 ## 1.0.1
 
 ### Patch Changes
