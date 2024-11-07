@@ -13,6 +13,8 @@ import { sendMessage } from '@mimirdev/apps-sdk/sendMessage';
 function findFinalCall(api: ApiPromise, call: Call | IMethod): Call | IMethod {
   if (api.tx.multisig.asMulti.is(call)) {
     return findFinalCall(api, api.registry.createType('Call', call.args[3]));
+  } else if (api.tx.multisig.asMultiThreshold1?.is(call)) {
+    return findFinalCall(api, call.args[1]);
   } else if (api.tx.proxy?.proxy?.is(call)) {
     return findFinalCall(api, call.args[2]);
   } else {
@@ -66,6 +68,11 @@ export async function checkCallAsync(
     }
 
     const nextAddress = encodeMultiAddress([address.toString(), ...call.args[1]], call.args[0]);
+
+    return checkCallAsync(api, nextCall, nextAddress, expectCall, expectAccount);
+  } else if (api.tx.multisig.asMultiThreshold1.is(call)) {
+    const nextCall = api.registry.createType('Call', call.args[1]);
+    const nextAddress = encodeMultiAddress([address.toString(), ...call.args[0]], 1);
 
     return checkCallAsync(api, nextCall, nextAddress, expectCall, expectAccount);
   } else if (api.tx.proxy?.proxy?.is(call)) {
