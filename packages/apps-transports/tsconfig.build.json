@@ -9,9 +9,5 @@
     "**/*.spec.ts",
     "**/test/**/*"
   ],
-  "references": [
-    {
-      "path": "../apps-transports/tsconfig.build.json"
-    }
-  ]
+  "references": []
 }

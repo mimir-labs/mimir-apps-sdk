@@ -4,7 +4,11 @@
     "composite": true,
     "paths": {
       "@mimirdev/apps-sdk": ["packages/apps-sdk/src"],
-      "@mimirdev/apps-sdk/*": ["packages/apps-sdk/src/*"]
+      "@mimirdev/apps-sdk/*": ["packages/apps-sdk/src/*"],
+      "@mimirdev/apps-transports": ["packages/apps-transports/src"],
+      "@mimirdev/apps-transports/*": ["packages/apps-transports/src/*"],
+      "@mimirdev/apps-validate": ["packages/apps-validate/src"],
+      "@mimirdev/apps-validate/*": ["packages/apps-validate/src/*"]
     },
     "skipLibCheck": true,
     "resolveJsonModule": true

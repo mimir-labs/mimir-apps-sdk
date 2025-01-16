@@ -1,8 +1,7 @@
 // Copyright 2023-2024 dev.mimir authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { MessageTypes, TransportResponseMessage } from '@polkadot/extension-base/background/types';
-import type { Message } from '@polkadot/extension-base/types';
+import type { Message, MessageTypes, TransportResponseMessage } from '@mimirdev/apps-transports/transports';
 
 import { enable, handleResponse, injectExtension, isValidMessage } from '@mimirdev/apps-sdk';
 import { sendMessage } from '@mimirdev/apps-sdk/sendMessage';

@@ -6,5 +6,6 @@
   "references": [
     { "path": "./packages/apps-inject/tsconfig.build.json" },
     { "path": "./packages/apps-sdk/tsconfig.build.json" },
+    { "path": "./packages/apps-transports/tsconfig.build.json" }
   ]
 }

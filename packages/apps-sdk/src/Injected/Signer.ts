@@ -1,8 +1,7 @@
 // Copyright 2023-2024 dev.mimir authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { Signer as SignerInterface, SignerResult } from '@polkadot/api/types';
-import type { SignerPayloadJSON, SignerPayloadRaw } from '@polkadot/types/types';
+import type { Signer as SignerInterface, SignerPayloadJSON, SignerPayloadRaw, SignerResult } from '@mimirdev/apps-transports';
 import type { SendRequest } from './types';
 
 // External to class, this.# is not private enough (yet)
