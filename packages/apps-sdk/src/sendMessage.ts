@@ -13,17 +13,10 @@ import type {
   SubscriptionMessageTypes,
   TransportRequestMessage,
   TransportResponseMessage
-} from '@polkadot/extension-base/background/types';
-import type { HexString } from '@polkadot/util/types';
+} from '@mimirdev/apps-transports';
 
 import { MESSAGE_ORIGIN_DAPP } from './defaults';
 import { getId } from './getId';
-
-declare module '@polkadot/extension-base/background/types' {
-  export interface RequestSignatures {
-    'pub(call.get)': [HexString, HexString];
-  }
-}
 
 // when sending a message from the injector to the extension, we
 //  - create an event - this we send to the loader

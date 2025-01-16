@@ -1,8 +1,8 @@
 // Copyright 2023-2024 dev.mimir authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { InjectedAccount, InjectedAccounts, Unsubcall } from '@polkadot/extension-inject/types';
-import type { SendRequest } from './types';
+import type { InjectedAccount } from '@mimirdev/apps-transports';
+import type { InjectedAccounts, SendRequest } from './types';
 
 // External to class, this.# is not private enough (yet)
 let sendRequest: SendRequest;
@@ -16,7 +16,7 @@ export default class Accounts implements InjectedAccounts {
     return sendRequest('pub(accounts.list)', { anyType });
   }
 
-  public subscribe(cb: (accounts: InjectedAccount[]) => unknown): Unsubcall {
+  public subscribe(cb: (accounts: InjectedAccount[]) => unknown): () => void {
     let id: string | null = null;
 
     sendRequest('pub(accounts.subscribe)', null, cb)

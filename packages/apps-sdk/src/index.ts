@@ -1,20 +1,33 @@
 // Copyright 2023-2024 dev.mimir authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { Message } from '@polkadot/extension-base/types';
-import type { InjectedWindow, InjectOptions } from '@polkadot/extension-inject/types';
+import type { Message } from '@mimirdev/apps-transports';
 
-import { checkCall, checkCallAsync } from './checkCall';
 import { MESSAGE_ORIGIN_WALLET } from './defaults';
 import Injected from './Injected';
 import { handleResponse, sendMessage } from './sendMessage';
+
+interface InjectedExtensionInfo {
+  name: string;
+  version: string;
+}
+
+type InjectOptions = InjectedExtensionInfo;
+interface InjectedWindowProvider {
+  enable: (origin: string) => Promise<Injected>;
+  version: string;
+}
+
+interface InjectedWindow {
+  injectedWeb3: Record<string, InjectedWindowProvider>;
+}
 
 // It is recommended to always use the function below to shield the extension and dapp from
 // any future changes. The exposed interface will manage access between the 2 environments,
 // be it via window (current), postMessage (under consideration) or any other mechanism
 export function injectExtension(enable: (origin: string) => Promise<Injected>, { name, version }: InjectOptions): void {
   // small helper with the typescript types, just cast window
-  const windowInject = window as Window & InjectedWindow;
+  const windowInject = window as unknown as InjectedWindow;
 
   // don't clobber the existing object, we will add it (or create as needed)
   windowInject.injectedWeb3 = windowInject.injectedWeb3 || {};
@@ -45,4 +58,4 @@ export function isValidMessage({ data, source }: Message, allowedOrigins: RegExp
   return !emptyOrMalformed && sentFromParentEl && validOrigin && data.origin === MESSAGE_ORIGIN_WALLET;
 }
 
-export { handleResponse, checkCall, checkCallAsync };
+export { handleResponse };
