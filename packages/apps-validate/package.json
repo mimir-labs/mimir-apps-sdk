@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "type": "module",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "index.js",
   "peerDependencies": {
     "@polkadot/api": "*",
