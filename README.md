@@ -44,45 +44,6 @@ if (MIMIR_REGEXP.test(origin)) {
 }
 ```
 
-### Retrieving Multisig Accounts
-You can retrieve multisig accounts using the same interface as `polkadot-js/extension`:
-
-```js
-import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
-
-const injected = await web3Enable('your app name');
-const accounts = await web3Accounts();
-```
-
-### Signing and Sending Transactions
-To send a `transferKeepAlive` transaction using Mimir's multisig account:
-
-```js
-import { web3FromSource } from '@polkadot/extension-dapp';
-import { checkCallAsync } from '@mimirdev/apps-sdk';
-
-// ... existing code ...
-
-if (isMimir) {
-  const result = await injected.signer.signPayload({
-    address: address,
-    method: tx.method.toHex(),
-    genesisHash: api.genesisHash.toHex()
-  });
-
-  const method = api.registry.createType('Call', result.payload.method);
-
-  if (!(await checkCallAsync(api, method, result.payload.address, tx.method, address))) {
-    throw new Error('not safe tx');
-  }
-
-  tx = api.tx[method.section][method.method](...method.args);
-  tx.addSignature(result.signer, result.signature, result.payload);
-}
-
-tx.send();
-```
-
 ## Security Considerations
 
 When using Mimir's multisig feature, ensure that transactions are verified for safety. Mimir wraps transactions in `AsMulti`, so it's crucial to confirm that the wrapped transaction matches the expected transaction. Mimir's code is open source, ensuring transparency and security.
