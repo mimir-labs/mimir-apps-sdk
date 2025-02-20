@@ -1,6 +1,6 @@
 # Changelog
 
-## 1.0.0 (2025-02-20)
+## 3.1.0 (2025-02-20)
 
 
 ### Features
@@ -12,4 +12,4 @@
 
 * The following workspace dependencies were updated
   * dependencies
-    * @mimirdev/apps-sdk bumped to 1.0.0
+    * @mimirdev/apps-sdk bumped to 3.1.0

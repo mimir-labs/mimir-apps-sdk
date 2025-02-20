@@ -12,8 +12,8 @@
 
 * The following workspace dependencies were updated
   * dependencies
-    * @mimirdev/apps-sdk bumped to 1.0.0
-    * @mimirdev/apps-transports bumped to 1.0.0
+    * @mimirdev/apps-sdk bumped to 3.1.0
+    * @mimirdev/apps-transports bumped to 3.1.0
 
 ## 3.0.1 (2025-02-20)
 
