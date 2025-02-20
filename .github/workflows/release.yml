@@ -27,16 +27,16 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v4
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
         with:
           node-version: "20"
           cache: "yarn"
 
       - run: yarn install --immutable | grep -v 'YN0013'
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
 
       - run: yarn build
-        if: ${{ steps.release.outputs.release_created }}
+        if: ${{ steps.release.outputs.releases_created }}
 
       - name: Publish
         run: |
