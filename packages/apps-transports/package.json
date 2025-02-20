@@ -1,0 +1,35 @@
+{
+  "author": "dev.mimir",
+  "bugs": "https://github.com/mimir-labs/mimir-apps-transports/issues",
+  "contributors": [],
+  "description": "declare transports types for mimir apps",
+  "homepage": "https://github.com/mimir-labs/mimir-apps-transports/tree/master/packages/apps-transports#readme",
+  "license": "Apache-2.0",
+  "maintainers": [],
+  "name": "@mimirdev/apps-transports",
+  "repository": {
+    "directory": "packages/apps-transports",
+    "type": "git",
+    "url": "https://github.com/mimir-labs/mimir-apps-transports.git"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "version": "3.0.0",
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "types": "build/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "@mimirdev/source": "./src/index.ts",
+        "types": "./build/index.d.ts",
+        "default": "./build/index.js"
+      }
+    }
+  },
+  "files": [
+    "build",
+    "LICENSE"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "author": "dev.mimir",
+  "bugs": "https://github.com/mimir-labs/mimir-apps-sdk/issues",
+  "contributors": [],
+  "description": "inject mimir apps sdk to window",
+  "homepage": "https://github.com/mimir-labs/mimir-apps-sdk/tree/master/packages/apps-inject#readme",
+  "license": "Apache-2.0",
+  "maintainers": [],
+  "name": "@mimirdev/apps-inject",
+  "repository": {
+    "directory": "packages/apps-inject",
+    "type": "git",
+    "url": "https://github.com/mimir-labs/mimir-apps-sdk.git"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "version": "3.0.0",
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "types": "build/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "@mimirdev/source": "./src/index.ts",
+        "types": "./build/index.d.ts",
+        "default": "./build/index.js"
+      }
+    },
+    "./consts": {
+      "import": {
+        "@mimirdev/source": "./src/consts.ts",
+        "types": "./build/consts.d.ts",
+        "default": "./build/consts.js"
+      }
+    }
+  },
+  "files": [
+    "build",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@mimirdev/apps-sdk": "workspace:^"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "files": [],
+  "references": [
+    { "path": "./packages/apps-inject/tsconfig.json" },
+    { "path": "./packages/apps-sdk/tsconfig.json" },
+    { "path": "./packages/apps-transports/tsconfig.json" },
+    { "path": "./packages/apps-validate/tsconfig.json" },
+    { "path": "./packages/papi-signer/tsconfig.json" }
+  ]
+}

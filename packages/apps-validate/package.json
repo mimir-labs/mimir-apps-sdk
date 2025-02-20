@@ -1,0 +1,45 @@
+{
+  "author": "dev.mimir",
+  "bugs": "https://github.com/mimir-labs/mimir-apps-validate/issues",
+  "contributors": [],
+  "description": "validate call for apps",
+  "homepage": "https://github.com/mimir-labs/mimir-apps-validate/tree/master/packages/apps-validate#readme",
+  "license": "Apache-2.0",
+  "maintainers": [],
+  "name": "@mimirdev/apps-validate",
+  "repository": {
+    "directory": "packages/apps-validate",
+    "type": "git",
+    "url": "https://github.com/mimir-labs/mimir-apps-validate.git"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "version": "3.0.0",
+  "main": "build/index.js",
+  "module": "build/index.js",
+  "types": "build/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "@mimirdev/source": "./src/index.ts",
+        "types": "./build/index.d.ts",
+        "default": "./build/index.js"
+      }
+    }
+  },
+  "files": [
+    "build",
+    "LICENSE"
+  ],
+  "peerDependencies": {
+    "@polkadot/api": "*",
+    "@polkadot/util-crypto": "*"
+  },
+  "dependencies": {
+    "@mimirdev/apps-sdk": "workspace:^"
+  },
+  "devDependencies": {
+    "@polkadot/api": "^15.3.1"
+  }
+}

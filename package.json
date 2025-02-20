@@ -1,0 +1,63 @@
+{
+  "author": "dev.mimir",
+  "bugs": "https://github.com/mimir-labs/mimir-apps-sdk/issues",
+  "contributors": [],
+  "description": "sdk for apps to connect mimir wallet",
+  "homepage": "https://github.com/mimir-labs/mimir-apps-sdk#readme",
+  "license": "Apache-2.0",
+  "packageManager": "yarn@4.5.1",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mimir-labs/mimir-apps-sdk.git"
+  },
+  "name": "mimir-apps-sdk",
+  "sideEffects": false,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "commit": "cz",
+    "build": "yarn clean && run-p build:ts",
+    "build:ts": "tsc --build tsconfig.build.json",
+    "clean": "node scripts/clean.js",
+    "postinstall": "npx only-allow yarn && husky",
+    "run-tsc": "tsc --build tsconfig.json --emitDeclarationOnly",
+    "run-eslint": "eslint --cache --fix",
+    "lint": "run-p run-tsc run-eslint",
+    "validate": "run-p lint"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.16.0",
+    "@polkadot-api/polkadot-signer": "^0.1.6",
+    "@polkadot-api/substrate-bindings": "^0.11.0",
+    "@polkadot-api/utils": "^0.1.2",
+    "@types/fs-extra": "^11",
+    "@types/node": "20",
+    "eslint": "^9.16.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-header": "^3.1.1",
+    "eslint-plugin-headers": "^1.2.1",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-testing-library": "^7.1.1",
+    "fs-extra": "^11.2.0",
+    "glob": "^11.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10",
+    "npm-run-all2": "^7.0.1",
+    "only-allow": "^1.2.1",
+    "prettier": "^3.4.2",
+    "release-please": "^16.16.0",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.6.3",
+    "typescript-eslint": "^8.17.0"
+  },
+  "resolutions": {
+    "typescript": "5.6.3"
+  }
+}
