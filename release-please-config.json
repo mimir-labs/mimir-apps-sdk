@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/release-please/schemas/config.json",
+  "bootstrap-sha": "f76087f0b4df920aced96d48bbb5bc2053a9789a",
+  "release-type": "node",
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": true,
+  "plugins": ["node-workspace"],
+  "packages": {
+    "packages/apps-inject": {},
+    "packages/apps-sdk": {},
+    "packages/apps-transports": {},
+    "packages/apps-validate": {},
+    "packages/papi-signer": {}
+  }
+}

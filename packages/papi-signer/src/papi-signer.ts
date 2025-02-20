@@ -1,10 +1,18 @@
 // Copyright 2023-2025 dev.mimir authors & contributors
 // SPDX-License-Identifier: Apache-2.0
 
-import type { InjectedAccount, InjectedMetadataKnown, MetadataDef, SignerPayloadJSON } from '@mimirdev/apps-transports';
+import type {
+  InjectedAccount,
+  InjectedMetadataKnown,
+  Message,
+  MessageTypes,
+  MetadataDef,
+  SignerPayloadJSON,
+  TransportResponseMessage
+} from '@mimirdev/apps-transports';
 import type { PolkadotSigner } from '@polkadot-api/polkadot-signer';
 
-import { sendMessage } from '@mimirdev/apps-sdk';
+import { handleResponse, isValidMessage, sendMessage } from '@mimirdev/apps-sdk';
 
 import { AccountId } from '@polkadot-api/substrate-bindings';
 import { fromHex, toHex } from '@polkadot-api/utils';
@@ -14,6 +22,21 @@ const accountIdEnc = AccountId().enc;
 const getPublicKey = (address: string) => (address.startsWith('0x') ? fromHex(address) : accountIdEnc(address));
 
 export class MimirPAPISigner {
+  constructor() {
+    // setup a response listener (events created by the loader for parent responses)
+    window.addEventListener('message', (message: Message): void => {
+      if (isValidMessage(message)) {
+        const { data } = message;
+
+        if (data.id) {
+          handleResponse(data as TransportResponseMessage<MessageTypes>);
+        } else {
+          console.error('Missing id for response.');
+        }
+      }
+    });
+  }
+
   public async enable(origin: string): Promise<{ result: boolean; authorizedAccounts: string[] }> {
     return sendMessage('pub(authorize.tab)', { origin });
   }
