@@ -5,7 +5,7 @@ import type { Message, MessageTypes, TransportResponseMessage } from '@mimirdev/
 
 import { enable, handleResponse, injectExtension, isValidMessage, sendMessage } from '@mimirdev/apps-sdk';
 
-import packageInfo from '../package.json' assert { type: 'json' };
+import packageInfo from '../package.json' with { type: 'json' };
 
 export function inject() {
   if (self === parent) {
