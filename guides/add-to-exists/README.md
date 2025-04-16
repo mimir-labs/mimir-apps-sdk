@@ -182,6 +182,12 @@ tx.signAndSend(injected.signer, { signer: injected.signer, withSignedTransaction
 });
 ```
 
+**Important:** Please be aware that the following approach is not compatible with Mimir integration, as `polkadotjs` maintains the original extrinsic structure during the `signAsync` process rather than replacing it with the multisig-wrapped version:
+```js
+await tx.signAsync(injected.signer, { signer: injected.signer, withSignedTransaction: true })
+await tx.send
+```
+
 #### Example Code (for @polkadot/api < v15.0.1)
 ```js
 import { web3FromSource } from '@polkadot/extension-dapp';
