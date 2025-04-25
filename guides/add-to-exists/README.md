@@ -191,7 +191,7 @@ await tx.send
 #### Example Code (for @polkadot/api < v15.0.1)
 ```js
 import { web3FromSource } from '@polkadot/extension-dapp';
-import { checkCallAsync } from '@mimirdev/apps-sdk';
+import { checkCallAsync } from '@mimirdev/apps-validate';
 
 // ... existing code ...
 
