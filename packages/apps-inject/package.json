@@ -41,5 +41,8 @@
   ],
   "dependencies": {
     "@mimirdev/apps-sdk": "workspace:^"
+  },
+  "scripts": {
+    "prebuild": "node ../../scripts/gen-package-info.js"
   }
 }
