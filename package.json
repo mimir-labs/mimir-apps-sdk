@@ -19,7 +19,8 @@
   ],
   "scripts": {
     "commit": "cz",
-    "build": "yarn clean && run-p build:ts",
+    "prebuild": "yarn workspace @mimirdev/apps-inject prebuild",
+    "build": "yarn clean && yarn prebuild && run-p build:ts",
     "build:ts": "tsc --build tsconfig.build.json",
     "clean": "node scripts/clean.js",
     "postinstall": "npx only-allow yarn && husky",
